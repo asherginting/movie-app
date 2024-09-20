@@ -48,12 +48,24 @@ const FavoriteScreen: React.FC<Props> = ({navigation}) => {
         <Title numberOfLines={1}>{item.Title}</Title>
         <Paragraph>{item.Year}</Paragraph>
       </Card.Content>
-      <Card.Actions>
+      <Card.Actions style={styles.cardActions}>
         <Button
-          onPress={() => navigation.navigate('Detail', {imdbID: item.imdbID})}>
-          View
+          mode="text"
+          compact={true}
+          onPress={() => navigation.navigate('Detail', {imdbID: item.imdbID})}
+          style={styles.button}
+        >
+          Detail
         </Button>
-        <Button onPress={() => removeFavorite(item.imdbID)}>Remove</Button>
+        <Button
+          mode="text"
+          compact={true}
+          onPress={() => removeFavorite(item.imdbID)}
+          style={styles.button}
+          color="red"
+        >
+          Remove
+        </Button>
       </Card.Actions>
     </Card>
   );
@@ -94,6 +106,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  cardActions: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  button: {
+    minWidth: 0,
+    paddingHorizontal: 8,
   },
 });
 
